@@ -86,14 +86,14 @@ for i in data['messages']:
 
 
         if i['date'][11:13] not in total_time_dict:
-            total_time_dict[i['date'][11:13]] = 0
-            time_dict[i['date'][11:13]] = {}
+            total_time_dict[i['date'][11:16]] = 0
+            time_dict[i['date'][11:16]] = {}
 
-        if i['from'] not in time_dict[i['date'][11:13]]:
-            time_dict[i['date'][11:13]][i['from']] = 0
+        if i['from'] not in time_dict[i['date'][11:16]]:
+            time_dict[i['date'][11:16]][i['from']] = 0
 
-        total_time_dict[i['date'][11:13]] +=1
-        time_dict[i['date'][11:13]][i['from']] += 1
+        total_time_dict[i['date'][11:16]] +=1
+        time_dict[i['date'][11:16]][i['from']] += 1
 
 
 

@@ -68,24 +68,7 @@ for i in data['messages']:
             person_word_Dict[i['from']] = {}
         participants[i['from']] += 1
 
-
-
-
-        if i['date'][0:10] not in total_date_dict:
-            total_date_dict[i['date'][0:10]] = 0
-            date_dict[i['date'][0:10]] = {}
-
-        if i['from'] not in date_dict[i['date'][0:10]]:
-            date_dict[i['date'][0:10]][i['from']] = 0
-
-        total_date_dict[i['date'][0:10]] += 1
-        date_dict[i['date'][0:10]][i['from']] +=1
-
-
-
-
-
-        if i['date'][11:13] not in total_time_dict:
+        if i['date'][11:16] not in total_time_dict:
             total_time_dict[i['date'][11:16]] = 0
             time_dict[i['date'][11:16]] = {}
 
@@ -145,126 +128,6 @@ for i in participants:
     person_word_list.append([i,dict1])
 
 
-
-
-
-#Output of Stats
-print("----:TELEGRAM CHAT STATS:----")
-print('Total Messages : ',totalmsgs,
-    '\nTotal Words : ', sum(word_count_dict.values()),
-    '\nTotal Characters : ' , sum(char_count_dict.values()),
-    '\nTotal Days Talked : ',len(total_date_dict),
-    '\n  ')
-print('-'*100,'\n ')
-
-
-
-
-
-print("-: Most Used Words :-")
-for i in mostusedwords[0:10]:
-    print(i[0], '-' ,i[1])
-print()
-print('-'*100,'\n ')
-
-
-
-
-print('--: Averages :--')
-print("-: Average Message Length :-")
-print(str(sum((char_count_dict.values()))/totalmsgs)[0:4],'Characters')
-print(str(sum((word_count_dict.values()))/totalmsgs)[0:4],'Words')
-print()
-
-
-print("-: Averages Per Day :-")
-print(str(totalmsgs/len(total_date_dict)),'Messages')
-print(str(sum(word_count_dict.values())/len(total_date_dict)),'Words')
-print(str(sum(char_count_dict.values())/len(total_date_dict)),'Characters')
-print('-'*100,'\n')
-
-
-
-
-
-
-
-print('-: Most Active Dates :-')
-for i in total_date_dict:
-    print(i[0],':',i[1],'messages')
-    for k in date_dict[i[0]]:
-        print(k,':',date_dict[i[0]][k])
-    print()
-
-    num +=1 
-    if num == 5:
-        break
-print()
-print('-'*100,'\n')
-
-
-
-
-
-
-print('--: Per Person Stats :--')
-print()
-print('-:Total Messages:-')
-for i in participants:
-    print(i,':',participants[i])
-print()
-
-print('-:Total Words:-')
-for i in word_count_dict:
-   print(i,":",word_count_dict[i])
-print()
-
-print('-:Total Characters:-')
-for i in word_count_dict:
-   print(i,":",char_count_dict[i])
-print('-'*100)
-
-
-print('-: Averages :-')
-print('Average Words Per Message')
-for i in word_count_dict:
-    print(i,':',str((word_count_dict[i]/participants[i]))[0:4])
-
-print()
-print('Average Characters Per Message')
-for i in char_count_dict:
-    print(i,':',str((char_count_dict[i]/participants[i]))[0:4])
-
-
-print()
-print("-: Averages Per Day :-")
-print("Messages")
-for i in participants:
-    print(i,':',participants[i]//len(total_date_dict))
-print()
-print("Words")
-for i in word_count_dict:
-    print(i,':',str((word_count_dict[i]//len(total_date_dict))))
-print()
-print('Characters')
-for i in char_count_dict:
-    print(i,':',str((char_count_dict[i]//len(total_date_dict))))
-    
-
-
-
-
-print()
-print('- : Most Used Words : -')
-for i in person_word_list:
-    print('- ',i[0],' -')
-    for j in i[1]:
-        print(j[0], ':',j[1])
-    print()
-
-
-
-
 print('-'*100,'\n ')
 print('-: Hourly Messages Stats :-')
 total_time_dict =  sorted(total_time_dict.items())
@@ -277,20 +140,7 @@ for i in total_time_dict:
 
 
 
-
-
 print('-'*100,'\n ')
-print('-: Weekly Messages Stats :-')
-for i in day_dict:
-    print(i,'-',sum(day_dict[i].values()))
-    for j in day_dict[i]:
-        print(j,':',day_dict[i][j])
-    print()
-
-
-
-print('-'*100,'\n ')
-print('Made With ❤ By VoiD')
 input('Enter any Key To Exit')
 exit()
 

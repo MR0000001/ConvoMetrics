@@ -65,12 +65,12 @@ if data is not None:
             if i['date'][0:10] not in date_dict[i['from']]:
                 date_dict[i['from']][i['date'][0:10]] = 0
 
-            if i['date'][11:13] not in time_dict[i['from']]:
-                time_dict[i['from']][i['date'][11:13]] = 0
+            if i['date'][11:16] not in time_dict[i['from']]:
+                time_dict[i['from']][i['date'][11:16]] = 0
 
             participants[i['from']] += 1
             date_dict[i['from']][i['date'][0:10]] +=1
-            time_dict[i['from']][i['date'][11:13]] += 1
+            time_dict[i['from']][i['date'][11:16]] += 1
             day_dict[i['from']][date_to_day(i['date'][0:10])] +=1
 
 
